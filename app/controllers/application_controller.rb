@@ -2,18 +2,25 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/contrib'
 require 'json'
+require 'sinatra/extension'
 
 # Load the models
 Dir.glob(File.join(__dir__, 'models', '*.rb')).each { |file| require file }
 
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
-  
+
   # Enable sessions for storing flash messages
   enable :sessions
 
   # Set the database URL
   set :database, 'sqlite3:bookstore.db'
+
+  # Serve static files from the React app
+  set :public_folder, File.join(__dir__, 'client', 'build')
+  get '/*' do
+    send_file File.join(settings.public_folder, 'index.html')
+  end
 
   # Handle 404 errors
   not_found do
@@ -69,7 +76,8 @@ class ApplicationController < Sinatra::Base
 
   # Add your other routes here
   get "/" do
-    { message: "Good luck with your project!" }.to_json
+    { message: "Good luck with my project!" }.to_json
   end
 end
+
 

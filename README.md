@@ -125,6 +125,34 @@ fetch("http://localhost:9292/test")
 - Use the [Network Tab in the Dev Tools][network tab] in the frontend to debug
   your requests.
 
+  The code is a Ruby web application built using the Sinatra framework. It serves as a simple bookstore API that provides CRUD operations for books and categories.
+
+The code has several parts:
+
+    The first section requires the necessary gems, sets the database URL, and loads the models.
+
+    The ApplicationController class defines the routes for the API. It sets the default content type to JSON, enables sessions for storing flash messages, serves static files from the React app, and handles 404 errors.
+
+    The routes for books are defined in the ApplicationController class. They include:
+
+    GET /books - gets all books
+    POST /books - adds a new book
+    GET /books/:id - gets a book by ID
+    PUT /books/:id - updates a book by ID
+    DELETE /books/:id - deletes a book by ID
+
+    The Book and Category classes are ActiveRecord models that define the schema for the books and categories tables.
+
+    The config/database.yml file defines the database configuration for different environments (development, test, and production).
+
+    The Rakefile includes tasks for running tests and starting the server.
+
+    The spec_helper.rb file includes configuration for RSpec, including database setup and teardown.
+
+    The config.ru file is a Rackup file that runs the application.
+
+    The last section of code includes middleware for handling CORS requests, parsing JSON from the request body into the params hash, and running the application.
+
 ## Resources
 
 - [create-react-app][]
