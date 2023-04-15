@@ -3,6 +3,8 @@ require 'sinatra/activerecord'
 require 'sinatra/contrib'
 require 'json'
 require 'sinatra/extension'
+require_relative '../models/Book'
+
 
 # Load the models
 Dir.glob(File.join(__dir__, 'models', '*.rb')).each { |file| require file }

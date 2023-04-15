@@ -52,4 +52,5 @@ group :test do
 end
 
 # Additional gems
-gem "sinatra-contrib"
+gem 'sinatra-contrib', require: 'sinatra/namespace'
+
